@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">KSwipeRefreshLayout</string>
+    <string name="name">View绘制详解(三)，扒一扒View的测量过程
+2016年10月04日 13:37:55
+阅读数：4128
+所有东西都是难者不会，会者不难，Android开发中有很多小伙伴觉得自定义View和事件分发或者Binder机制等是难点，其实不然，如果静下心来花点时间把这几个技术点都研究一遍，你会发现其实这些东西都很简单。OK，废话不多说，今天我们就来看看View的测量。View的测量纷繁复杂，不过如果能够做到提纲挈领，其实也不难。那么今天，我们就来扒一扒View的测量。本文主要涉及如下知识点：
+
+1.View的测量
+关于View的测量我其实在之前的一篇文章中已经提到过了（Android自定义View之ProgressBar出场记 ），在我们自定义View的时候，除了一个onDraw方法可以重写之外，还有一个onMeasure方法也可以重写，这个onMeasure方法就是用来确定一个View的宽和高的，onMeasure方法的方法头如下：</string>
+</resources>

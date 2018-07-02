@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="KSwipeRefreshLayout">
+        <attr name="refreshMode">
+            <enum name="top" value="0" />
+            <enum name="bottom" value="1" />
+            <enum name="both" value="2" />
+            <enum name="never" value="3" />
+        </attr>
+        <attr name="refreshView" format="string" />
+        <attr name="loadView" format="string" />
+    </declare-styleable>
+
+</resources>
