@@ -1,13 +1,13 @@
 package com.yuan.library
 
 import android.content.Context
+import android.os.Handler
 import android.support.v4.view.ViewCompat
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import com.yuan.library.R.attr.loadView
-import com.yuan.library.R.attr.refreshView
+import com.yuan.library.R.attr.*
 
 /**
  * Created by shucheng.qu on 2018/6/26
@@ -25,6 +25,7 @@ class KSwipeRefreshLayout : ViewGroup {
     var rawY: Float = 0f
     private var refreshListener: OnRefreshListener? = null
 
+
     constructor(context: Context?) : this(context, null)
     constructor(context: Context?, attrs: AttributeSet?) : this(context, attrs, 0)
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
@@ -36,25 +37,8 @@ class KSwipeRefreshLayout : ViewGroup {
         val refreshMode = typedArray.getInt(R.styleable.KSwipeRefreshLayout_refreshMode, 0)
         val refreshViewName = typedArray.getString(R.styleable.KSwipeRefreshLayout_refreshView)
         val loadViewName = typedArray.getString(R.styleable.KSwipeRefreshLayout_loadView)
-        when (refreshMode) {
-            0 -> {
-                canRefresh = true
-                canLoad = false
-            }
-            1 -> {
-                canRefresh = false
-                canLoad = true
-            }
-            2 -> {
-                canRefresh = true
-                canLoad = true
-            }
-            else -> {
-                canRefresh = false
-                canLoad = false
-            }
-        }
 
+        setMode(refreshMode)
         try {
             val clazz = Class.forName(refreshViewName)
             val constructor = clazz.getConstructor(Context::class.java)
@@ -284,7 +268,11 @@ class KSwipeRefreshLayout : ViewGroup {
 
     fun setRefresh(refreshing: Boolean) {
         if (refreshing) {
-            downRefresh()
+
+            Handler().postDelayed({
+                val height = mRefreshView?.measuredHeight ?: 200
+                downRefresh(height)
+            }, 50)
         } else {
             when (refreshState) {
                 RefreshState.DOWNPULL -> mRefreshCall?.endRefresh()
@@ -294,6 +282,31 @@ class KSwipeRefreshLayout : ViewGroup {
             }
             refreshState = RefreshState.DEFAULT
             layoutChildren()
+        }
+    }
+
+    fun setRefreshMode(mode: RefreshMode) {
+        setMode(mode.mode)
+    }
+
+    private fun setMode(refreshMode: Int) {
+        when (refreshMode) {
+            0 -> {
+                canRefresh = true
+                canLoad = false
+            }
+            1 -> {
+                canRefresh = false
+                canLoad = true
+            }
+            2 -> {
+                canRefresh = true
+                canLoad = true
+            }
+            else -> {
+                canRefresh = false
+                canLoad = false
+            }
         }
     }
 

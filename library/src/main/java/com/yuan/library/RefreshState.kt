@@ -6,3 +6,15 @@ package com.yuan.library
 enum class RefreshState {
     DEFAULT, DOWNPULL, REFRESHING, UPPULL
 }
+
+enum class RefreshMode {
+    TOP(0), BOTTOM(1), BOTH(2), NEVER(3);
+
+    var mode = 0
+
+    constructor(mode: Int) {
+        this.mode = mode
+    }
+
+
+}
