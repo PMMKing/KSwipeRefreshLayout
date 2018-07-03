@@ -50,6 +50,4 @@ class CustomView : LinearLayout, RefreshCall {
     override fun refreshDiff(diffY: Int) {
         iv.rotation = diffY.toFloat()
     }
-
-
 }

@@ -14,6 +14,7 @@ import com.cheng.rvadapter.adapter.MultiAdapter
 import com.cheng.rvadapter.holder.BaseViewHolder
 import com.cheng.rvadapter.manage.ITypeView
 import com.yuan.library.OnRefreshListener
+import com.yuan.library.RefreshMode
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -33,7 +34,7 @@ class MainActivity : AppCompatActivity() {
                 Handler().postDelayed({ ks_layout.setRefresh(false) }, 1500)
             }
         })
-        ks_layout.setRefresh(true)
+
 
         val adapter = MultiAdapter<String>(this).addTypeView(object : ITypeView<String> {
             override fun isForViewType(p0: String?, p1: Int): Boolean {
