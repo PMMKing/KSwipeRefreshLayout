@@ -14,15 +14,15 @@ import com.yuan.library.R.attr.*
  */
 class KSwipeRefreshLayout : ViewGroup {
 
-    var mTargetView: View? = null
-    var mRefreshView: View? = null
-    var mRefreshCall: RefreshCall? = null
-    var mLoadView: View? = null
-    var mLoadCall: RefreshCall? = null
-    var refreshState: RefreshState = RefreshState.DEFAULT
-    var canRefresh = true
-    var canLoad = false
-    var rawY: Float = 0f
+    private var mTargetView: View? = null
+    private var mRefreshView: View? = null
+    private var mRefreshCall: RefreshCall? = null
+    private var mLoadView: View? = null
+    private var mLoadCall: RefreshCall? = null
+    private var refreshState: RefreshState = RefreshState.DEFAULT
+    private var canRefresh = true
+    private var canLoad = false
+    private var rawY: Float = 0f
     private var refreshListener: OnRefreshListener? = null
 
 
@@ -32,7 +32,7 @@ class KSwipeRefreshLayout : ViewGroup {
         initView(attrs)
     }
 
-    fun initView(attrs: AttributeSet?) {
+    private fun initView(attrs: AttributeSet?) {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.KSwipeRefreshLayout)
         val refreshMode = typedArray.getInt(R.styleable.KSwipeRefreshLayout_refreshMode, 0)
         val refreshViewName = typedArray.getString(R.styleable.KSwipeRefreshLayout_refreshView)

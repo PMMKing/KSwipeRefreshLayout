@@ -35,7 +35,6 @@ class MainActivity : AppCompatActivity() {
         })
         ks_layout.setRefresh(true)
 
-
         val adapter = MultiAdapter<String>(this).addTypeView(object : ITypeView<String> {
             override fun isForViewType(p0: String?, p1: Int): Boolean {
                 return true
