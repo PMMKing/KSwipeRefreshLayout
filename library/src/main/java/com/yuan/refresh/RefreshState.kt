@@ -1,4 +1,4 @@
-package com.yuan.library
+package com.yuan.refresh
 
 /**
  * Created by shucheng.qu on 2018/6/27

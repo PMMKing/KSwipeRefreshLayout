@@ -1,4 +1,4 @@
-package com.yuan.library
+package com.yuan.refresh
 
 import android.content.Context
 import android.os.Handler
@@ -7,7 +7,6 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import com.yuan.library.R.attr.*
 
 /**
  * Created by shucheng.qu on 2018/6/26

@@ -1,4 +1,4 @@
-package com.yuan.library;
+package com.yuan.refresh;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

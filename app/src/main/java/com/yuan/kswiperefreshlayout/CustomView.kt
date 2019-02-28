@@ -1,13 +1,11 @@
 package com.yuan.kswiperefreshlayout
 
-import android.app.Activity
 import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.LinearLayout
-import com.yuan.library.RefreshCall
+import com.yuan.refresh.RefreshCall
 import kotlinx.android.synthetic.main.refresh_header.view.*
 import kotlin.concurrent.thread
 

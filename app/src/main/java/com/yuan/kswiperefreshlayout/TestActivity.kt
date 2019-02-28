@@ -1,18 +1,11 @@
 package com.yuan.kswiperefreshlayout
 
-import android.content.Context
-import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
-import android.view.ViewGroup
 import android.widget.ImageView
-import com.cheng.rvadapter.adapter.MultiAdapter
-import com.cheng.rvadapter.holder.BaseViewHolder
-import com.cheng.rvadapter.manage.ITypeView
-import com.yuan.library.OnRefreshListener
+import com.yuan.refresh.OnRefreshListener
 import kotlinx.android.synthetic.main.activity_main.*
 
 class TestActivity : AppCompatActivity() {
