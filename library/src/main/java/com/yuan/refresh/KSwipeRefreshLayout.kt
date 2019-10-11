@@ -23,6 +23,7 @@ class KSwipeRefreshLayout : ViewGroup {
     private var canLoad = false
     private var rawY: Float = 0f
     private var refreshListener: OnRefreshListener? = null
+    private var diff = 0
 
 
     constructor(context: Context?) : this(context, null)
@@ -130,7 +131,7 @@ class KSwipeRefreshLayout : ViewGroup {
                             layoutChildren(diff)
                             mRefreshCall?.refreshDiff(diff)
                         } else {
-                            layoutChildren()
+                            layoutChildren(0)
                             rawY = event.rawY
                         }
                     }
@@ -139,7 +140,7 @@ class KSwipeRefreshLayout : ViewGroup {
                             layoutChildren(diff)
                             mLoadCall?.refreshDiff(diff)
                         } else {
-                            layoutChildren()
+                            layoutChildren(0)
                             rawY = event.rawY
                         }
                     }
@@ -155,7 +156,7 @@ class KSwipeRefreshLayout : ViewGroup {
                             downRefresh(height)
                         } else {
                             refreshState = RefreshState.DEFAULT
-                            layoutChildren()
+                            layoutChildren(0)
                         }
                     }
                     RefreshState.UPPULL -> {
@@ -164,7 +165,7 @@ class KSwipeRefreshLayout : ViewGroup {
                             upLoad(height)
                         } else {
                             refreshState = RefreshState.DEFAULT
-                            layoutChildren()
+                            layoutChildren(0)
                         }
                     }
                 }
@@ -205,7 +206,7 @@ class KSwipeRefreshLayout : ViewGroup {
                 removeView(this.mRefreshView)
             }
             this.mRefreshView = mRefreshView
-            mRefreshView.layoutParams = ViewGroup.MarginLayoutParams(-1, -2)
+            mRefreshView.layoutParams = MarginLayoutParams(-1, -2)
             addView(mRefreshView)
             if (mRefreshView is RefreshCall) mRefreshCall = mRefreshView
         }
@@ -217,7 +218,7 @@ class KSwipeRefreshLayout : ViewGroup {
                 removeView(this.mLoadView)
             }
             this.mLoadView = mLoadView
-            mLoadView.layoutParams = ViewGroup.MarginLayoutParams(-1, -2)
+            mLoadView.layoutParams = MarginLayoutParams(-1, -2)
             addView(mLoadView)
             if (mLoadView is RefreshCall) mLoadCall = mLoadView
         }
@@ -233,9 +234,10 @@ class KSwipeRefreshLayout : ViewGroup {
         return !canScrollVertically && canLoad && mLoadView != null
     }
 
-    private fun layoutChildren(diff: Int = 0) {
+    private fun layoutChildren(diff: Int = this.diff) {
         if (mTargetView == null) return
         if (diff == 0 && refreshState == RefreshState.REFRESHING) return
+        this.diff = diff
         mRefreshView?.let {
             val headerLeft = paddingLeft
             val headerTop = paddingTop - it.measuredHeight + diff
@@ -280,7 +282,7 @@ class KSwipeRefreshLayout : ViewGroup {
                 }
             }
             refreshState = RefreshState.DEFAULT
-            layoutChildren()
+            layoutChildren(0)
         }
     }
 
@@ -313,22 +315,22 @@ class KSwipeRefreshLayout : ViewGroup {
     /**
      * {@inheritDoc}
      */
-    override fun generateDefaultLayoutParams(): ViewGroup.LayoutParams {
-        return ViewGroup.MarginLayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+    override fun generateDefaultLayoutParams(): LayoutParams {
+        return MarginLayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
     }
 
     /**
      * {@inheritDoc}
      */
-    override fun generateLayoutParams(p: ViewGroup.LayoutParams): ViewGroup.LayoutParams {
-        return ViewGroup.MarginLayoutParams(p)
+    override fun generateLayoutParams(p: LayoutParams): LayoutParams {
+        return MarginLayoutParams(p)
     }
 
     /**
      * {@inheritDoc}
      */
-    override fun generateLayoutParams(attrs: AttributeSet): ViewGroup.LayoutParams {
-        return ViewGroup.MarginLayoutParams(context, attrs)
+    override fun generateLayoutParams(attrs: AttributeSet): LayoutParams {
+        return MarginLayoutParams(context, attrs)
     }
 
 }

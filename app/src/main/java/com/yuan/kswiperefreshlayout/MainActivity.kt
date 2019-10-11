@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.cheng.rvadapter.adapter.MultiAdapter
@@ -52,5 +53,7 @@ class MainActivity : AppCompatActivity() {
         adapter.setOnItemClickListener { view, any, i ->
             startActivity(Intent(this, TestActivity::class.java))
         }
+        Log.e("", 555.toString())
+
     }
 }

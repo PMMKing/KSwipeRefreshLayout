@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:loadView="com.yuan.kswiperefreshlayout.CustomView"
-    app:refreshMode="bottom">
+    app:refreshMode="both">
 
     <TextView
         android:id="@+id/rv_list"

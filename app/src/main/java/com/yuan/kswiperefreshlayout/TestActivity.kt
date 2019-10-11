@@ -19,7 +19,8 @@ class TestActivity : AppCompatActivity() {
         val imageView2 = ImageView(this)
         imageView2.setImageResource(R.mipmap.ic_launcher)
 
-        ks_layout.setRefreshView(view)
+//        ks_layout.setRefreshView(view)
+        ks_layout.setRefreshView(CustomView(this))
 
         ks_layout.setOnRefreshListener(object : OnRefreshListener {
             override fun onRefresh() {

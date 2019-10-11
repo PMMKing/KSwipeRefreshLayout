@@ -14,13 +14,11 @@ import kotlin.concurrent.thread
  */
 class CustomView : LinearLayout, RefreshCall {
 
-    constructor(context: Context?) : this(context, null)
-    constructor(context: Context?, attrs: AttributeSet?) : this(context, attrs, 0)
-    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
-        initView()
-    }
+    constructor(context: Context?) : super(context)
+    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
+    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 
-    fun initView() {
+    init {
         LayoutInflater.from(context).inflate(R.layout.refresh_header, this, true)
         setBackgroundColor(Color.GRAY)
     }
